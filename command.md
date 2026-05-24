@@ -40,6 +40,9 @@ kubectl describe service express-service
 kubectl delete service express-service
 
 <!-- ingress command -->
+# ingress controller download
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.12.1/deploy/static/provider/cloud/deploy.yaml
+
 # ingress create/apply
 kubectl apply -f ingress.yaml
 
@@ -76,7 +79,11 @@ kubectl config current-context
 
 <!-- miniflow -->
 kubectl apply -f deployment.yaml
+
 kubectl apply -f service.yaml
+
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.12.1/deploy/static/provider/cloud/deploy.yaml
+
 kubectl apply -f ingress.yaml
 
 kubectl get all
