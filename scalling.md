@@ -175,6 +175,13 @@ Command:
 kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
 ```
 
+
+# 8.1 Metrics Server patch (run in cmd)
+kubectl patch deployment metrics-server -n kube-system --type=json -p="[{\"op\":\"add\",\"path\":\"/spec/template/spec/containers/0/args/-\",\"value\":\"--kubelet-insecure-tls\"},{\"op\":\"add\",\"path\":\"/spec/template/spec/containers/0/args/-\",\"value\":\"--kubelet-preferred-address-types=InternalIP\"}]"
+
+kubectl rollout restart deployment metrics-server -n kube-system
+
+
 Check:
 ```bash
 kubectl get pods -n kube-system
@@ -252,7 +259,7 @@ Matlab pod max 0.5 CPU use kar sakta h.
 
 Command:
 ```bash
-kubectl autoscale deployment express-deployment --cpu-percent=50 --min=3 --max=10
+kubectl autoscale deployment express-deployment --cpu-percent=50 --min=3 --max=8
 ```
 
 ---
@@ -263,7 +270,7 @@ kubectl autoscale deployment express-deployment --cpu-percent=50 --min=3 --max=1
 |---|---|
 | --cpu-percent=50 | CPU 50% cross hui to scale |
 | --min=3 | Minimum 3 pods |
-| --max=10 | Maximum 10 pods |
+| --max=8 | Maximum 8 pods |
 
 ---
 
@@ -277,26 +284,7 @@ kubectl get hpa
 Example:
 ```text
 NAME                 TARGETS   MINPODS   MAXPODS   REPLICAS
-express-deployment   20%/50%   3         10        3
-```
-
----
-
-# 13. Live scaling kaise dekhe
-
-Terminal 1:
-```bash
-kubectl get pods -w
-```
-
-Terminal 2:
-```bash
-kubectl top pods
-```
-
-Jab load badhega:
-```text
-Pod count increase hoga
+express-deployment   20%/50%   3         8        3
 ```
 
 ---

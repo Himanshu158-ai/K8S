@@ -1,6 +1,6 @@
 <!-- deployment command -->
 # deployment create/apply
-kubectl apply -f deployment.yaml
+kubectl apply -f deployment.yml
 
 # deployments dekhne ke liye
 kubectl get deployments
@@ -28,7 +28,7 @@ kubectl delete deployment express-deployment
 
 <!-- service command -->
 # service create/apply
-kubectl apply -f service.yaml
+kubectl apply -f service.yml
 
 # services dekhne ke liye
 kubectl get services
@@ -44,7 +44,7 @@ kubectl delete service express-service
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.12.1/deploy/static/provider/cloud/deploy.yaml
 
 # ingress create/apply
-kubectl apply -f ingress.yaml
+kubectl apply -f ingress.yml
 
 # ingress dekhne ke liye
 kubectl get ingress
