@@ -342,7 +342,6 @@ kubectl get pods -w
 ---
 
 # 16. Easy Real-Life Analogy
-
 | Kubernetes Component | Real Life Example |
 |---|---|
 | Pod | Worker |
